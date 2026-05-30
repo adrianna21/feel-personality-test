@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>About FEEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Roboto', sans-serif;
+    background: #D9F0F7;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 430px;
+    padding: 40px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .site-header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #1a1a1a;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .site-header h1 .about-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-right: 6px;
+  }
+
+  .feel-gradient {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    background: linear-gradient(90deg, #F6A952 0%, #EAA4A6 36.82%, #BBA1D4 61.9%, #1DCBD6 86.98%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  .abstract {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .description {
+    font-size: 0.85rem;
+    color: #444;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .made-by {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  /* ── GRID ── */
+  .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .card-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .card-desc {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: #888;
+    text-align: center;
+    line-height: 1.45;
+  }
+
+  .card-desc span {
+    font-weight: 700;
+    color: var(--card-accent, #B293EB);
+  }
+
+  .card img {
+    width: 100%;
+    max-width: 110px;
+    border-radius: 14px;
+    margin-top: 4px;
+  }
+
+  /* Back link */
+  .back-link {
+    margin-top: 32px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.82rem;
+    color: #1a1a1a;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="site-header">
+    <h1>
+      <span class="about-text">ABOUT:</span>
+      <span class="feel-gradient">FEEL</span>
+    </h1>
+    <p class="abstract" style="margin-top:14px;">What is FEEL?</p>
+    <p class="description">FEEL is a 12-question story-based personality quiz that maps your emotional instincts across four axes — how you express, process, decide, and move through the world. Each result is one of 16 personalities, each with its own emotional signature.</p>
+    <p class="made-by">Made by MA(A)AD Studios</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card" style="--card-accent:#B293EB">
+      <div class="card-name">SPARK</div>
+      <div class="card-desc"><span>Expressive · Empathetic · Adaptive · Wandering</span><br>The social glue. Brings energy to every room and makes people feel seen without even trying.</div>
+      <img src="assets/PERSONALITY_SPARK.png" alt="SPARK">
+    </div>
+
+    <div class="card" style="--card-accent:#B293EB">
+      <div class="card-name">FLARE</div>
+      <div class="card-desc"><span>Expressive · Empathetic · Adaptive · Oriented</span><br>Bold and warm with a clear direction. Leads with feeling but always knows where they're going.</div>
+      <img src="assets/PERSONALITY_FLARE.png" alt="FLARE">
+    </div>
+
+    <div class="card" style="--card-accent:#B293EB">
+      <div class="card-name">BLOOM</div>
+      <div class="card-desc"><span>Expressive · Empathetic · Structured · Wandering</span><br>Open-hearted and quietly consistent. Nurtures connections while remaining open to wherever life leads.</div>
+      <img src="assets/PERSONALITY_BLOOM.png" alt="BLOOM">
+    </div>
+
+    <div class="card" style="--card-accent:#B293EB">
+      <div class="card-name">DRIFT</div>
+      <div class="card-desc"><span>Expressive · Empathetic · Structured · Oriented</span><br>Emotionally grounded with a steady path. Processes out loud and builds as they go.</div>
+      <img src="assets/PERSONALITY_DRIFT.png" alt="DRIFT">
+    </div>
+
+    <div class="card" style="--card-accent:#EB585A">
+      <div class="card-name">ECHO</div>
+      <div class="card-desc"><span>Expressive · Analytical · Adaptive · Wandering</span><br>Curious and electric. Thrives on ideas, pivots fast, and leaves impressions that linger.</div>
+      <img src="assets/PERSONALITY_ECHO.png" alt="ECHO">
+    </div>
+
+    <div class="card" style="--card-accent:#EB585A">
+      <div class="card-name">TIDE</div>
+      <div class="card-desc"><span>Expressive · Analytical · Adaptive · Oriented</span><br>Moves with purpose and reads the room with precision. Confident, driven, and hard to ignore.</div>
+      <img src="assets/PERSONALITY_TIDE.png" alt="TIDE">
+    </div>
+
+    <div class="card" style="--card-accent:#EB585A">
+      <div class="card-name">CURRENT</div>
+      <div class="card-desc"><span>Expressive · Analytical · Structured · Wandering</span><br>Loves a system but follows their gut. Organized on the outside, exploratory on the inside.</div>
+      <img src="assets/PERSONALITY_CURRENT.png" alt="CURRENT">
+    </div>
+
+    <div class="card" style="--card-accent:#EB585A">
+      <div class="card-name">PRISM</div>
+      <div class="card-desc"><span>Expressive · Analytical · Structured · Oriented</span><br>Clear-eyed and multi-dimensional. Sees patterns others miss and builds toward something real.</div>
+      <img src="assets/PERSONALITY_PRISM.png" alt="PRISM">
+    </div>
+
+    <div class="card" style="--card-accent:#FCB750">
+      <div class="card-name">PULSE</div>
+      <div class="card-desc"><span>Reserved · Empathetic · Adaptive · Wandering</span><br>Quietly attuned. Feels everything deeply and finds meaning in unexpected places.</div>
+      <img src="assets/PERSONALITY_PULSE.png" alt="PULSE">
+    </div>
+
+    <div class="card" style="--card-accent:#FCB750">
+      <div class="card-name">SURGE</div>
+      <div class="card-desc"><span>Reserved · Empathetic · Adaptive · Oriented</span><br>Still waters, strong current. Reserved but purposeful — moves decisively when it matters.</div>
+      <img src="assets/PERSONALITY_SURGE.png" alt="SURGE">
+    </div>
+
+    <div class="card" style="--card-accent:#3AC6E9">
+      <div class="card-name">HAZE</div>
+      <div class="card-desc"><span>Reserved · Empathetic · Structured · Wandering</span><br>Gentle and introspective. Needs space to process but finds beauty in the in-between.</div>
+      <img src="assets/PERSONALITY_HAZE.png" alt="HAZE">
+    </div>
+
+    <div class="card" style="--card-accent:#3AC6E9">
+      <div class="card-name">FORGE</div>
+      <div class="card-desc"><span>Reserved · Empathetic · Structured · Oriented</span><br>Reliable and quietly powerful. Builds with intention and shows up for the people they care about.</div>
+      <img src="assets/PERSONALITY_FORGE.png" alt="FORGE">
+    </div>
+
+    <div class="card" style="--card-accent:#5FC672">
+      <div class="card-name">FLINT</div>
+      <div class="card-desc"><span>Reserved · Analytical · Adaptive · Wandering</span><br>Sharp mind, open road. Independent thinker who charts their own course without needing a map.</div>
+      <img src="assets/PERSONALITY_FLINT.png" alt="FLINT">
+    </div>
+
+    <div class="card" style="--card-accent:#5FC672">
+      <div class="card-name">CORE</div>
+      <div class="card-desc"><span>Reserved · Analytical · Adaptive · Oriented</span><br>Focused and self-contained. Knows what they want, cuts through the noise, and executes.</div>
+      <img src="assets/PERSONALITY_CORE.png" alt="CORE">
+    </div>
+
+    <div class="card" style="--card-accent:#5FC672">
+      <div class="card-name">EMBER</div>
+      <div class="card-desc"><span>Reserved · Analytical · Structured · Wandering</span><br>Thoughtful and slow-burning. Doesn't rush — they're building something that lasts.</div>
+      <img src="assets/PERSONALITY_EMBER.png" alt="EMBER">
+    </div>
+
+    <div class="card" style="--card-accent:#5FC672">
+      <div class="card-name">MOSS</div>
+      <div class="card-desc"><span>Reserved · Analytical · Structured · Oriented</span><br>Patient, precise, and deeply rooted. The person who's already thought of everything you're about to say.</div>
+      <img src="assets/PERSONALITY_MOSS.png" alt="MOSS">
+    </div>
+
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Home</a>
+
+</div>
+</body>
+</html>

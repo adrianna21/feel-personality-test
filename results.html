@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Your Results — FEEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Roboto', sans-serif;
+    background: url('assets/gradient-bg.png') center top / cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* ── TOP GRADIENT SECTION ── */
+  .top-section {
+    padding: 28px 18px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .you-are {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  /* Two-column hero: left = name+pct+pills, right = image stacked above energy */
+  .hero-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 148px;
+    gap: 12px;
+    align-items: start;
+    margin-bottom: 0;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .personality-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 13vw, 3.8rem);
+    line-height: 1;
+    color: #1a1a1a;
+  }
+
+  .type-pct {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  .trait-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 2px;
+  }
+
+  .pill {
+    border-radius: 26.505px;
+    background: var(--accent, #B293EB);
+    color: #fff;
+    padding: 9px 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  /* Right column: avatar image on top, energy card below */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .avatar-img {
+    width: 148px;
+    height: 148px;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Energy card — sits below avatar in right column */
+  .energy-card {
+    background: rgba(255,255,255,0.88);
+    border-radius: 16px;
+    padding: 12px 13px;
+  }
+  .energy-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 9px;
+    text-align: center;
+  }
+  .energy-row {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-bottom: 5px;
+    font-size: 0.72rem;
+    color: #444;
+    line-height: 1.4;
+  }
+  .energy-pct {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: var(--purple, #8755E4);
+    white-space: nowrap;
+  }
+
+  /* ── WHITE SECTION ── */
+  .white-section {
+    background: transparent;
+    padding: 14px 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Emotions two-col grid */
+  .emotions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .emotions-grid > div {
+    background: #fff;
+    border: 1.5px solid #eee;
+    border-radius: 16px;
+    padding: 14px 12px;
+  }
+  .emotions-col-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    margin-bottom: 11px;
+    text-align: center;
+  }
+  .emotion-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 9px;
+  }
+
+  /* Flower SVG icon — colored via fill on the path */
+  .emotion-flower {
+    width: 28px;
+    height: 27px;
+    flex-shrink: 0;
+  }
+
+  .emotion-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.76rem;
+    color: #333;
+    line-height: 1.2;
+  }
+
+  /* Retake */
+  .retake-row {
+    text-align: center;
+    padding: 8px 0 18px;
+  }
+  .retake-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #1a1a1a;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /* ── DARK BOTTOM SECTION ── */
+  .dark-section {
+    background: #1a1a1a;
+    padding: 22px 18px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .compat-col-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 12px;
+  }
+  .compat-avatars {
+    display: flex;
+    gap: 10px;
+  }
+  .compat-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .compat-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 14px;
+    object-fit: cover;
+    display: block;
+  }
+  .compat-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.62rem;
+    color: #666;
+    text-align: center;
+  }
+
+  /* Emotion fill colors applied to flower SVG path */
+  .fc-happiness    { fill: #F6A952; } .fc-anger        { fill: #C0392B; }
+  .fc-fear         { fill: #6C3483; } .fc-disgust      { fill: #5D7A2B; }
+  .fc-sadness      { fill: #5B9EC9; } .fc-envy         { fill: #E91E8C; }
+  .fc-contempt     { fill: #0E8C77; } .fc-pride        { fill: #922B21; }
+  .fc-nostalgia    { fill: #45B39D; } .fc-comfort      { fill: #F0A87E; }
+  .fc-gratitude    { fill: #F7C948; } .fc-love         { fill: #E8537A; }
+  .fc-hope         { fill: #7EC8A4; } .fc-supported    { fill: #5DADE2; }
+  .fc-safe         { fill: #52BE80; } .fc-jealousy     { fill: #A569BD; }
+  .fc-resentment   { fill: #884EA0; } .fc-shame        { fill: #B03A2E; }
+  .fc-guilt        { fill: #9B59B6; } .fc-rejection    { fill: #CB4335; }
+  .fc-betrayal     { fill: #7B241C; } .fc-loneliness   { fill: #5D6D7E; }
+  .fc-disappointment{fill: #797D7F; } .fc-numbness     { fill: #AAB7B8; }
+  .fc-insecurity   { fill: #8E44AD; } .fc-boredom      { fill: #95A5A6; }
+  .fc-overwhelmed  { fill: #E74C3C; } .fc-triumph      { fill: #F39C12; }
+  .fc-craving      { fill: #E67E22; } .fc-excitement   { fill: #F1C40F; }
+  .fc-determination{ fill: #D35400; } .fc-confidence   { fill: #2E86C1; }
+  .fc-inspired     { fill: #1ABC9C; } .fc-compassion   { fill: #E91E8C; }
+  .fc-admiration   { fill: #3498DB; } .fc-sympathy     { fill: #85C1E9; }
+  .fc-empathy      { fill: #76D7C4; } .fc-romance      { fill: #F1948A; }
+  .fc-awe          { fill: #8E44AD; } .fc-teal         { fill: #29B6D0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP GRADIENT -->
+  <div class="top-section">
+    <p class="you-are">YOU ARE...</p>
+
+    <div class="hero-row">
+      <!-- LEFT: name, pct, pills -->
+      <div class="hero-left">
+        <div class="personality-name" id="pName">—</div>
+        <div class="type-pct" id="pPct"></div>
+        <div class="trait-pills" id="traitPills"></div>
+      </div>
+
+      <!-- RIGHT: avatar image + energy card stacked -->
+      <div class="hero-right">
+        <img class="avatar-img" id="avatarImg" src="assets/PERSONALITY_SPARK.png" alt="Personality character">
+        <div class="energy-card">
+          <div class="energy-title">YOUR ENERGY</div>
+          <div id="energyRows"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHITE SECTION -->
+  <div class="white-section">
+    <div class="emotions-grid">
+      <div>
+        <div class="emotions-col-title">Strongest Emotions</div>
+        <div id="strongEmotions"></div>
+      </div>
+      <div>
+        <div class="emotions-col-title">Growth Potential</div>
+        <div id="growthEmotions"></div>
+      </div>
+    </div>
+
+    <div class="retake-row">
+      <button class="retake-link" onclick="retake()">Retake Innate Mood Personality Quiz</button>
+    </div>
+  </div>
+
+  <!-- DARK BOTTOM -->
+  <div class="dark-section">
+    <div>
+      <div class="compat-col-title">Most Compatible</div>
+      <div class="compat-avatars" id="compatMost"></div>
+    </div>
+    <div>
+      <div class="compat-col-title">Least Compatible</div>
+      <div class="compat-avatars" id="compatLeast"></div>
+    </div>
+  </div>
+
+</div>
+<script>
+const FLOWER_PATH = `M62.463 89C56.9763 89 51.6242 86.5559 47.7766 82.2961C47.2497 81.7125 46.5389 81.3927 45.7743 81.3927C45.0097 81.3927 44.29 81.7147 43.7429 82.2983C42.2003 83.9441 40.8236 85.1091 39.2832 86.0796C36.2495 87.987 32.7495 88.9978 29.1664 88.9978C26.3839 88.9978 23.5744 88.3739 21.0385 87.1932C16.0048 84.852 12.2245 80.4893 10.6639 75.2232C9.09436 69.9281 9.89706 64.1768 12.868 59.4429C13.1707 58.9621 13.2379 58.345 13.0585 57.7032C12.8411 56.9206 12.294 56.2274 11.6303 55.8942C10.35 55.2479 8.97776 54.51 7.61003 53.4881C0.995566 48.5485 -1.64573 39.9886 1.03593 32.1823C3.67498 24.5035 10.9195 19.3425 19.0586 19.3425C20.6484 19.3425 22.247 19.5393 23.8098 19.9283C23.9377 19.9596 24.0722 19.9753 24.2112 19.9753C25.3233 19.9753 26.5588 18.9109 26.7045 17.8286C26.9691 15.8653 27.2426 14.0921 27.9287 12.2763C30.7023 4.93513 37.8639 -1.79514e-08 45.7474 -2.1689e-08C46.7811 -2.2179e-08 47.8259 0.0849727 48.8484 0.254918C57.6153 1.70393 64.1894 9.0004 64.8307 17.9941C64.9069 19.0563 66.3442 19.9664 67.4653 19.9664C67.6133 19.9664 67.7545 19.9507 67.8823 19.9194C69.407 19.5415 70.9676 19.3492 72.5214 19.3492C79.7458 19.3492 86.2459 23.372 89.4791 29.8478C91.8199 34.5325 92.1473 39.8008 90.4006 44.6822C88.636 49.6129 84.9835 53.5328 80.1157 55.7198C79.3713 56.0529 78.7547 56.764 78.5058 57.5735C78.2883 58.2846 78.369 59.0002 78.7345 59.5927C81.3332 63.8011 82.2279 68.7675 81.2503 73.5797C80.2704 78.403 77.4991 82.627 73.4452 85.4759C70.1649 87.7813 66.3644 88.9978 62.4562 88.9978L62.463 89Z`;
+
+function flowerSVG(colorClass) {
+  return `<svg class="emotion-flower" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 89" fill="none">
+    <path class="${colorClass}" d="${FLOWER_PATH}"/>
+  </svg>`;
+}
+
+const scores = JSON.parse(localStorage.getItem('quizScores') || '{}');
+
+const axes = [
+  { left:{code:'E',name:'Expressive'}, right:{code:'R',name:'Reserved'} },
+  { left:{code:'F',name:'Empathetic'}, right:{code:'L',name:'Analytical'} },
+  { left:{code:'S',name:'Adaptive'},   right:{code:'T',name:'Structured'} },
+  { left:{code:'W',name:'Wandering'},  right:{code:'O',name:'Oriented'}  },
+];
+
+const results = axes.map(axis => {
+  const l = scores[axis.left.code]  || 0;
+  const r = scores[axis.right.code] || 0;
+  return l >= r ? axis.left : axis.right;
+});
+
+const code = results.map(r => r.code).join('');
+
+// 16 personalities: 4-letter code → name (axes: E/R, F/L, S/T, W/O)
+const personalities = {
+  'EFSW':'SPARK',  'EFSO':'FLARE',  'EFTW':'BLOOM',  'EFTO':'DRIFT',
+  'ELSW':'ECHO',   'ELSO':'TIDE',   'ELTW':'CURRENT','ELTO':'PRISM',
+  'RFSW':'PULSE',  'RFSO':'SURGE',  'RFTW':'HAZE',   'RFTO':'FORGE',
+  'RLSW':'FLINT',  'RLSO':'CORE',   'RLTW':'EMBER',  'RLTO':'MOSS',
+};
+const personalityName = personalities[code] || code;
+// Debug: log the raw code to console
+console.log('Quiz code:', code, '→', personalityName);
+
+// PNG per personality
+const personalityPNG = {
+  'SPARK':'PERSONALITY_SPARK','FLARE':'PERSONALITY_FLARE','BLOOM':'PERSONALITY_BLOOM',
+  'DRIFT':'PERSONALITY_DRIFT','ECHO':'PERSONALITY_ECHO',  'TIDE':'PERSONALITY_TIDE',
+  'CURRENT':'PERSONALITY_CURRENT','PRISM':'PERSONALITY_PRISM','PULSE':'PERSONALITY_PULSE',
+  'SURGE':'PERSONALITY_SURGE','HAZE':'PERSONALITY_HAZE',  'FORGE':'PERSONALITY_FORGE',
+  'FLINT':'PERSONALITY_FLINT','CORE':'PERSONALITY_CORE',  'EMBER':'PERSONALITY_EMBER',
+  'MOSS':'PERSONALITY_MOSS',
+};
+
+// Compatibility map
+const compatibility = {
+  'SPARK':  { most:['FLARE','BLOOM'],    least:['FLINT','CORE']   },
+  'FLARE':  { most:['SPARK','SURGE'],    least:['MOSS','HAZE']    },
+  'BLOOM':  { most:['SPARK','PRISM'],    least:['FLINT','CORE']   },
+  'DRIFT':  { most:['HAZE','ECHO'],      least:['FORGE','FLINT']  },
+  'ECHO':   { most:['DRIFT','TIDE'],     least:['FLARE','SURGE']  },
+  'TIDE':   { most:['ECHO','MOSS'],      least:['FLARE','SURGE']  },
+  'CURRENT':{ most:['SURGE','PULSE'],    least:['MOSS','HAZE']    },
+  'PRISM':  { most:['BLOOM','EMBER'],    least:['FLINT','CORE']   },
+  'PULSE':  { most:['CURRENT','FORGE'],  least:['ECHO','TIDE']    },
+  'SURGE':  { most:['FLARE','CURRENT'],  least:['ECHO','TIDE']    },
+  'HAZE':   { most:['DRIFT','MOSS'],     least:['FLARE','CURRENT']},
+  'FORGE':  { most:['PULSE','FLINT'],    least:['DRIFT','ECHO']   },
+  'FLINT':  { most:['FORGE','CORE'],     least:['SPARK','BLOOM']  },
+  'CORE':   { most:['FLINT','FORGE'],    least:['SPARK','BLOOM']  },
+  'EMBER':  { most:['PRISM','MOSS'],     least:['FLINT','FORGE']  },
+  'MOSS':   { most:['TIDE','EMBER'],     least:['FLARE','CURRENT']},
+};
+
+const traitPillsMap = {
+  E:['The go-to person to arrange all the friend hang outs','A goof ball of energy','Rarely gets angry','Makes sure everyone feels included in a group setting','Takes control of stressful situations'],
+  R:['Thoughtful before speaking','Deep inner world','Needs time alone to recharge','Values meaningful one-on-one connection','Processes feelings privately'],
+  F:['Tunes in to how others feel','Leads with heart over logic','Absorbs the room\'s energy','First to offer support','Remembers the small emotional details'],
+  L:['Seeks patterns and logic first','Objective under pressure','Finds comfort in understanding systems','Clear-headed decision maker','Values accuracy over feelings'],
+  S:['Flows with change naturally','Finds opportunity in the unexpected','Flexible and open by instinct','Energized by novelty','Comfortable without a plan'],
+  T:['Finds comfort in structure','Reliable and consistent','Plans ahead with purpose','Keeps things on track','Sets the standard for follow-through'],
+  W:['Drawn to open-ended exploration','Finds meaning in the journey','Sits comfortably with ambiguity','Follows feeling over destination','Lets things unfold naturally'],
+  O:['Moves toward clear goals','Motivated by progress','Turns insights into action','Already thinking three steps ahead','Gives direction to the group'],
+};
+
+const energyBlurbs = {
+  E:[['20%','"Guys… I got this don\'t worry"'],['40%','Carrying the conversation'],['20%','I\'m probably right but let\'s do it your way']],
+  R:[['40%','Listening deeply before speaking'],['30%','Thinking before responding'],['20%','Holding space for others']],
+  F:[['35%','Sensing what\'s unspoken'],['30%','Offering comfort first'],['20%','Feeling it all at once']],
+  L:[['40%','Analysing the situation'],['30%','Finding the efficient path'],['20%','Staying cool-headed']],
+  S:[['35%','Riding whatever comes next'],['30%','Pivoting without hesitation'],['20%','Turning detours into discoveries']],
+  T:[['40%','Following through on the plan'],['25%','Keeping things on track'],['25%','Setting the standard']],
+  W:[['35%','Wandering into the unknown'],['30%','Sitting with open questions'],['20%','Letting things unfold']],
+  O:[['40%','"I\'ve already mapped this out"'],['30%','Moving with intention'],['20%','Already three steps ahead']],
+};
+
+const emotionsMap = {
+  E:{ strong:[['fc-excitement','Excitement'],['fc-love','Love'],['fc-craving','Craving'],['fc-overwhelmed','Overwhelmed'],['fc-triumph','Triumph']], growth:[['fc-compassion','Compassion'],['fc-gratitude','Gratitude'],['fc-numbness','Numbness'],['fc-guilt','Guilt'],['fc-safe','Safe']] },
+  R:{ strong:[['fc-nostalgia','Nostalgia'],['fc-comfort','Comfort'],['fc-loneliness','Loneliness'],['fc-admiration','Admiration'],['fc-guilt','Guilt']], growth:[['fc-excitement','Excitement'],['fc-triumph','Triumph'],['fc-love','Love'],['fc-confidence','Confidence'],['fc-compassion','Compassion']] },
+  F:{ strong:[['fc-empathy','Empathy'],['fc-sympathy','Sympathy'],['fc-compassion','Compassion'],['fc-sadness','Sadness'],['fc-rejection','Rejection']], growth:[['fc-confidence','Confidence'],['fc-determination','Determination'],['fc-pride','Pride'],['fc-contempt','Contempt'],['fc-triumph','Triumph']] },
+  L:{ strong:[['fc-determination','Determination'],['fc-confidence','Confidence'],['fc-pride','Pride'],['fc-boredom','Boredom'],['fc-contempt','Contempt']], growth:[['fc-sympathy','Sympathy'],['fc-sadness','Sadness'],['fc-romance','Romance'],['fc-hope','Hope'],['fc-empathy','Empathy']] },
+  S:{ strong:[['fc-excitement','Excitement'],['fc-hope','Hope'],['fc-craving','Craving'],['fc-inspired','Inspired'],['fc-overwhelmed','Overwhelmed']], growth:[['fc-determination','Determination'],['fc-guilt','Guilt'],['fc-safe','Safe'],['fc-gratitude','Gratitude'],['fc-pride','Pride']] },
+  T:{ strong:[['fc-determination','Determination'],['fc-pride','Pride'],['fc-confidence','Confidence'],['fc-disappointment','Disappointment'],['fc-resentment','Resentment']], growth:[['fc-hope','Hope'],['fc-inspired','Inspired'],['fc-excitement','Excitement'],['fc-comfort','Comfort'],['fc-compassion','Compassion']] },
+  W:{ strong:[['fc-nostalgia','Nostalgia'],['fc-awe','Awe'],['fc-loneliness','Loneliness'],['fc-hope','Hope'],['fc-insecurity','Insecurity']], growth:[['fc-triumph','Triumph'],['fc-confidence','Confidence'],['fc-determination','Determination'],['fc-pride','Pride'],['fc-gratitude','Gratitude']] },
+  O:{ strong:[['fc-triumph','Triumph'],['fc-confidence','Confidence'],['fc-determination','Determination'],['fc-guilt','Guilt'],['fc-shame','Shame']], growth:[['fc-nostalgia','Nostalgia'],['fc-comfort','Comfort'],['fc-awe','Awe'],['fc-loneliness','Loneliness'],['fc-hope','Hope']] },
+};
+
+// Percentage per personality
+const personalityPct = {
+  'SPARK':'12%','FLARE':'8%','BLOOM':'10%','DRIFT':'6%',
+  'ECHO':'7%','TIDE':'9%','CURRENT':'5%','PRISM':'6%',
+  'PULSE':'8%','SURGE':'7%','HAZE':'4%','FORGE':'5%',
+  'FLINT':'4%','CORE':'3%','EMBER':'3%','MOSS':'3%',
+};
+
+// Accent color per personality group
+const accentColors = {
+  'SPARK':'#B293EB','FLARE':'#B293EB','BLOOM':'#B293EB','DRIFT':'#B293EB',
+  'ECHO':'#EB585A', 'TIDE':'#EB585A', 'CURRENT':'#EB585A','PRISM':'#EB585A',
+  'PULSE':'#FCB750','SURGE':'#FCB750',
+  'HAZE':'#3AC6E9', 'FORGE':'#3AC6E9',
+  'FLINT':'#5FC672','CORE':'#5FC672', 'EMBER':'#5FC672','MOSS':'#5FC672',
+};
+document.documentElement.style.setProperty('--accent', accentColors[personalityName] || '#B293EB');
+document.getElementById('pName').textContent = personalityName;
+const pct = personalityPct[personalityName] || '—';
+document.getElementById('pPct').textContent = `${pct} of people are also this type`;
+
+// Avatar PNG
+const pngFile = personalityPNG[personalityName] || 'PERSONALITY_SPARK';
+document.getElementById('avatarImg').src = `assets/${pngFile}.png`;
+
+// Pills — 5 from primary dominant
+const pillContainer = document.getElementById('traitPills');
+const primaryCode = results[0].code;
+(traitPillsMap[primaryCode] || []).forEach(text => {
+  const el = document.createElement('div');
+  el.className = 'pill';
+  el.textContent = text;
+  pillContainer.appendChild(el);
+});
+
+// Energy
+const energyContainer = document.getElementById('energyRows');
+(energyBlurbs[primaryCode] || []).forEach(([pct, label]) => {
+  energyContainer.innerHTML += `<div class="energy-row"><span class="energy-pct">${pct}</span><span>${label}</span></div>`;
+});
+
+// Emotions
+function mergeEmotions(type) {
+  const seen = new Set(); const out = [];
+  for (const r of results) {
+    for (const item of ((emotionsMap[r.code]||{})[type]||[])) {
+      if (!seen.has(item[1])) { seen.add(item[1]); out.push(item); }
+      if (out.length >= 5) return out;
+    }
+  }
+  return out;
+}
+function renderEmotions(id, list) {
+  const el = document.getElementById(id);
+  list.forEach(([cls, label]) => {
+    el.innerHTML += `<div class="emotion-item">${flowerSVG(cls)}<span class="emotion-label">${label}</span></div>`;
+  });
+}
+renderEmotions('strongEmotions', mergeEmotions('strong'));
+renderEmotions('growthEmotions', mergeEmotions('growth'));
+
+// Compatibility
+const compat = compatibility[personalityName] || { most:['SPARK','FLARE'], least:['FLINT','CORE'] };
+
+function renderCompatRow(containerId, names) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  names.forEach(name => {
+    const png = personalityPNG[name] || 'PERSONALITY_SPARK';
+    el.innerHTML += `
+      <div class="compat-avatar-wrap">
+        <img src="assets/${png}.png" class="compat-img" alt="${name}">
+        <span class="compat-label">${name}</span>
+      </div>`;
+  });
+}
+renderCompatRow('compatMost', compat.most);
+renderCompatRow('compatLeast', compat.least);
+
+function retake() {
+  localStorage.removeItem('quizScores');
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>
